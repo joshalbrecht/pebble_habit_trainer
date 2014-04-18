@@ -1,0 +1,17 @@
+{
+  "uuid": "45ca2d2f-401a-407f-8543-2fb9b50f7d26",
+  "shortName": "habit_trainer",
+  "longName": "habit_trainer",
+  "companyName": "Codexica",
+  "versionCode": 1,
+  "versionLabel": "1.0.0",
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
