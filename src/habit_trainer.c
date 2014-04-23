@@ -9,9 +9,9 @@ static int seconds_left;
 static int interval;
 static const int MIN_SECONDS = 15;
 static const int STARTING_INTERVAL = 30;
-static const int MILD_DECREASE_FACTOR = 0.7;
-static const int DECREASE_FACTOR = 0.4;
-static const int INCREASE_FACTOR = 1.4;
+static const float MILD_DECREASE_FACTOR = 0.7;
+static const float DECREASE_FACTOR = 0.4;
+static const float INCREASE_FACTOR = 1.4;
 
 static void decrease_timer(float factor) {
   interval = (int)((float)(interval) * factor);
