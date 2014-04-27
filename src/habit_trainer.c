@@ -9,9 +9,12 @@ static int seconds_left;
 static int interval;
 static const int MIN_SECONDS = 15;
 static const int STARTING_INTERVAL = 30;
-static const float MILD_DECREASE_FACTOR = 0.7;
-static const float DECREASE_FACTOR = 0.4;
+static const float MILD_DECREASE_FACTOR = 0.75;
+static const float DECREASE_FACTOR = 0.5;
 static const float INCREASE_FACTOR = 1.4;
+static const char* WELCOME_TEXT = "\n\n\n\n\nClick select to start";
+static const char* TIMER_TEXT = "\n\n\n\n\n%d seconds left";
+static const char* INSTRUCTIONS = "\nUP = Increase               \n\nSELECT = Same            \n\nDOWN = Decrease       \n\n\nWAIT = Small Decrease";
 
 static void decrease_timer(float factor) {
   interval = (int)((float)(interval) * factor);
@@ -34,11 +37,12 @@ static void increase_timer(float factor) {
 }
 
 static void update_countdown() {
-  static char text_buffer[] = "Press up to increase\nPress select to maintain\nPress down to decrease.";
+  static char text_buffer[256];
+
   if (seconds_left > 0) {
-    snprintf(text_buffer, sizeof(text_buffer), "%d seconds left", seconds_left);
+    snprintf(text_buffer, sizeof(text_buffer), TIMER_TEXT, seconds_left);
   } else {
-    snprintf(text_buffer, sizeof(text_buffer), "Press up to increase\nPress select to maintain\nPress down to decrease.");
+    snprintf(text_buffer, sizeof(text_buffer), INSTRUCTIONS);
   }
   text_layer_set_text(text_layer, text_buffer);
 }
@@ -91,8 +95,8 @@ static void window_load(Window *window) {
   Layer *window_layer = window_get_root_layer(window);
   GRect bounds = layer_get_bounds(window_layer);
 
-  text_layer = text_layer_create((GRect) { .origin = { 0, 72 }, .size = { bounds.size.w, bounds.size.h } });
-  text_layer_set_text(text_layer, "Click select to start");
+  text_layer = text_layer_create((GRect) { .origin = { 0, 0 }, .size = { bounds.size.w, bounds.size.h } });
+  text_layer_set_text(text_layer, WELCOME_TEXT);
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   text_layer_set_overflow_mode(text_layer, GTextOverflowModeTrailingEllipsis);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
