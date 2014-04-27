@@ -10,3 +10,7 @@ Now you can easily train habits that require near-continuous attention! (ex: hav
 It vibrates periodically. If you were doing a good job, press Up and the timer will wait longer next time. If you forgot, press Select to keep the same interval, or Down to decrease it.
 
 Soon you'll start actually remembering!
+
+## Version History
+
+* 1.0.0: First public release on the app store. 
